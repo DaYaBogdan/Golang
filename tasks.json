@@ -40,5 +40,89 @@
     "stdout": "!!!\r\n",
     "stderr": null,
     "run_at": "2025-07-15T18:49:31.471706105+03:00"
+  },
+  {
+    "base_report": {
+      "id": "Ww7WrTCE",
+      "task": {
+        "run_after_seconds": 3,
+        "command": "echo Hello"
+      },
+      "status": "executed"
+    },
+    "exit_code": 0,
+    "stdout": "Hello\r\n",
+    "stderr": null,
+    "run_at": "2025-07-16T20:01:13.841400903+03:00"
+  },
+  {
+    "base_report": {
+      "id": "1eR6MZjS",
+      "task": {
+        "run_after_seconds": 3,
+        "command": "echo Hello"
+      },
+      "status": "executed"
+    },
+    "exit_code": 0,
+    "stdout": "Hello\r\n",
+    "stderr": null,
+    "run_at": "2025-07-16T20:03:41.374220403+03:00"
+  },
+  {
+    "base_report": {
+      "id": "9ggp0ZaM",
+      "task": {
+        "run_after_seconds": 3,
+        "command": "echo !!!!"
+      },
+      "status": "executed"
+    },
+    "exit_code": 0,
+    "stdout": "!!!!\r\n",
+    "stderr": null,
+    "run_at": "2025-07-16T20:06:54.661935603+03:00"
+  },
+  {
+    "base_report": {
+      "id": "ja7Cf75b",
+      "task": {
+        "run_after_seconds": 20,
+        "command": "echo !!!!"
+      },
+      "status": "executed"
+    },
+    "exit_code": 0,
+    "stdout": "!!!!\r\n",
+    "stderr": null,
+    "run_at": "2025-07-16T20:10:36.40394152+03:00"
+  },
+  {
+    "base_report": {
+      "id": "I9dH4uaY",
+      "task": {
+        "run_after_seconds": 20,
+        "command": "echo !!!!"
+      },
+      "status": "canceled"
+    },
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": null,
+    "run_at": "2025-07-16T20:13:33.79457722+03:00"
+  },
+  {
+    "base_report": {
+      "id": "nzU0MHqB",
+      "task": {
+        "run_after_seconds": 20,
+        "command": "echo !!!!"
+      },
+      "status": "canceled"
+    },
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": null,
+    "run_at": "2025-07-16T20:21:20.77605882+03:00"
   }
 ]

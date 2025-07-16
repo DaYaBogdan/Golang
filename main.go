@@ -40,6 +40,8 @@ const timeOutTimer time.Duration = 30 * time.Second
 // Ограничитель кол-ва исполняемых тасков
 const limitingTasks int = 5
 
+var activeTasks int = 0
+
 // Списки для работы с тасками и историей
 var (
 	tasks   []FullReport
@@ -133,18 +135,7 @@ func findByID(ID string) int {
 	return -1
 }
 
-// Загрузчики
-func loadTasks() {
-
-	//Загружаем историю из файла
-	data, err := os.ReadFile("tasks.json")
-	if err == nil {
-		tasksMu.Lock()
-		json.Unmarshal(data, &tasks)
-		tasksMu.Unlock()
-	}
-}
-
+// Загрузчик
 func loadHistory() {
 
 	//Загружаем историю из файла
@@ -273,6 +264,8 @@ func executeComand(report FullReport) {
 		report.changeStatuses(string(output), err)
 	}
 
+	activeTasks--
+
 	deleteFromTasks(findByID(report.BaseReport.ID))
 	saveReportToFile(report)
 }
@@ -280,6 +273,8 @@ func executeComand(report FullReport) {
 func delayTask(report FullReport, w http.ResponseWriter) {
 
 	ctx, cancel := context.WithTimeout(context.Background(), timeOutTimer)
+
+	activeTasks++
 
 	// При выходе из функции закрыть канал контекста
 	defer cancel()
@@ -290,7 +285,6 @@ func delayTask(report FullReport, w http.ResponseWriter) {
 
 		// Проверка на отмену задачи
 		if tasks[findByID(report.BaseReport.ID)].BaseReport.Status == "canceled" {
-			fmt.Fprintf(w, "200 OK")
 			return
 		}
 
@@ -309,7 +303,7 @@ func delayTask(report FullReport, w http.ResponseWriter) {
 func collectTask(w http.ResponseWriter, r *http.Request) {
 
 	// Проверка на кол-во задач
-	if len(tasks) >= limitingTasks {
+	if activeTasks >= limitingTasks {
 		http.Error(w, "Tasks overflow", http.StatusBadRequest)
 		return
 	}
