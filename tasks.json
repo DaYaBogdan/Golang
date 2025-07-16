@@ -124,5 +124,19 @@
     "stdout": "",
     "stderr": null,
     "run_at": "2025-07-16T20:21:20.77605882+03:00"
+  },
+  {
+    "base_report": {
+      "id": "aPFjRDGZ",
+      "task": {
+        "run_after_seconds": 20,
+        "command": "echo Hello"
+      },
+      "status": "scheduled"
+    },
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": null,
+    "run_at": "2025-07-16T21:14:35.33900092+03:00"
   }
 ]

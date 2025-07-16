@@ -311,7 +311,6 @@ func collectTask(w http.ResponseWriter, r *http.Request) {
 	// Инициализация инструментов и их подготовка
 	var task Task
 	decoder := json.NewDecoder(r.Body)
-	decoder.DisallowUnknownFields()
 
 	// Декодировка JSON'а и проверка на ошибки
 	err := decoder.Decode(&task)
